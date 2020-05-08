@@ -4,7 +4,6 @@ using UnityEngine;
 public class HandController : MonoBehaviour
 {
     public APRController APR_Player;
-    public bool Left;
     public bool hasJoint;
     private bool hasWaitedAfterThrow = true;
 
@@ -36,33 +35,31 @@ public class HandController : MonoBehaviour
     {
         if (APR_Player.useControls && hasWaitedAfterThrow)
         {
-            //Left Hand
-            if (Left)
-            {
-                if (col.gameObject.tag == "Object" && !hasJoint)
-                {
-                    if (m_pickupInputDown && !hasJoint)
-                    {
-                        hasJoint = true;
-                        hasWaitedAfterThrow = false;
-                        this.gameObject.AddComponent<FixedJoint>();
-                        this.gameObject.GetComponent<FixedJoint>().breakForce = 100000;
-                        this.gameObject.GetComponent<FixedJoint>().connectedBody = col.gameObject.GetComponent<Rigidbody>();
-                    }
-                }
 
-                else if (col.gameObject.tag == "Player" && col.gameObject.layer != LayerMask.NameToLayer(APR_Player.thisPlayerLayer) && !hasJoint)
+            if (col.gameObject.tag == "Object" && !hasJoint)
+            {
+                if (m_pickupInputDown && !hasJoint)
                 {
-                    if (m_pickupInputDown && !hasJoint)
-                    {
-                        hasJoint = true;
-                        hasWaitedAfterThrow = false;
-                        this.gameObject.AddComponent<FixedJoint>();
-                        this.gameObject.GetComponent<FixedJoint>().breakForce = 100000;
-                        this.gameObject.GetComponent<FixedJoint>().connectedBody = col.gameObject.GetComponent<Rigidbody>();
-                    }
+                    hasJoint = true;
+                    hasWaitedAfterThrow = false;
+                    this.gameObject.AddComponent<FixedJoint>();
+                    this.gameObject.GetComponent<FixedJoint>().breakForce = 100000;
+                    this.gameObject.GetComponent<FixedJoint>().connectedBody = col.gameObject.GetComponent<Rigidbody>();
                 }
             }
+
+            else if (col.gameObject.tag == "Player" && col.gameObject.layer != LayerMask.NameToLayer(APR_Player.thisPlayerLayer) && !hasJoint)
+            {
+                if (m_pickupInputDown && !hasJoint)
+                {
+                    hasJoint = true;
+                    hasWaitedAfterThrow = false;
+                    this.gameObject.AddComponent<FixedJoint>();
+                    this.gameObject.GetComponent<FixedJoint>().breakForce = 100000;
+                    this.gameObject.GetComponent<FixedJoint>().connectedBody = col.gameObject.GetComponent<Rigidbody>();
+                }
+            }
+
         }
     }
 

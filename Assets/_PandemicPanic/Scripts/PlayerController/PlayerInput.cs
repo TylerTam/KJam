@@ -10,13 +10,9 @@ public class PlayerInput : MonoBehaviour
 
     private APRController m_ragdollController;
     private Player m_playerInputController;
+    public Transform m_facingForward;
+    public float m_facingDirAngleThreshold;
 
-    public static PlayerInput Instance;
-    private void Awake()
-    {
-
-        Instance = this;
-    }
     private void Start()
     {
 
@@ -45,44 +41,24 @@ public class PlayerInput : MonoBehaviour
     }
 
 
-
     public void GetInput()
     {
         #region Movement Input
-        if (m_playerInputController.GetButton("MoveForward"))
-        {
-            m_ragdollController.MoveForward(true);
-        }
-        if (m_playerInputController.GetButtonUp("MoveForward"))
-        {
-            m_ragdollController.MoveForward(false);
-        }
 
-        if (m_playerInputController.GetButton("MoveBackwards"))
-        {
-            m_ragdollController.MoveBackwards(true);
-        }
-        if (m_playerInputController.GetButtonUp("MoveBackwards"))
-        {
-            m_ragdollController.MoveBackwards(false);
-        }
+        m_ragdollController.Move(new Vector3(m_playerInputController.GetAxis("MoveHorizon"), 0, m_playerInputController.GetAxis("MoveVertical")));
 
-        if (m_playerInputController.GetButton("MoveLeft"))
-        {
-            m_ragdollController.MoveLeft(true);
-        }
-        if (m_playerInputController.GetButtonUp("MoveLeft"))
-        {
-            m_ragdollController.MoveLeft(false);
-        }
+        Vector3 facingDir = new Vector3(m_playerInputController.GetAxis("LookHorizon"),0, m_playerInputController.GetAxis("LookVertical"));
 
-        if (m_playerInputController.GetButton("MoveRight"))
+        if (Vector3.Angle(new Vector3(m_facingForward.forward.x, 0, m_facingForward.forward.z),facingDir) > m_facingDirAngleThreshold)
         {
-            m_ragdollController.MoveRight(true);
-        }
-        if (m_playerInputController.GetButtonUp("MoveRight"))
-        {
-            m_ragdollController.MoveRight(false);
+            if (Mathf.Sign(Vector3.Dot(new Vector3(m_facingForward.forward.x, 0, m_facingForward.forward.z).normalized, Quaternion.AngleAxis(90,Vector3.up) * facingDir)) > 0)
+            {
+                m_ragdollController.TurnCharacter(true,false);
+            }
+            else
+            {
+                m_ragdollController.TurnCharacter(false, true);
+            }
         }
         #endregion
 
@@ -125,7 +101,13 @@ public class PlayerInput : MonoBehaviour
         {
             m_ragdollController.PunchInput(true, false);
         }
+
         #endregion
+
+        if (m_playerInputController.GetButtonDown("Ragdoll"))
+        {
+            m_ragdollController.ActivateRagdoll();
+        }
     }
 
 }
