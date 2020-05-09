@@ -2,15 +2,20 @@
 using UnityEngine;
 using System.Linq;
 
+[System.Serializable]
+public class APREvent : UnityEngine.Events.UnityEvent { }
 public class APRController : MonoBehaviour
 {
 
     public bool useControls;
 
     public float m_movementDeadzone;
+    public bool m_isPlayer;
     [Header("The Layer Only This Player Is On")]
     //Player Layer
     public string thisPlayerLayer;
+
+    public APREvent m_knockedOut;
 
     [Header("Player Parameters")]
     //Player parameters
@@ -100,6 +105,8 @@ public class APRController : MonoBehaviour
     UpperRightLegTarget, LowerRightLegTarget,
     UpperLeftLegTarget, LowerLeftLegTarget;
 
+    
+
     void Awake()
     {
         //Setup joint drives
@@ -167,8 +174,11 @@ public class APRController : MonoBehaviour
     }
     private void Start()
     {
-        GrabLeft.AssignPlayerID(GetComponent<PlayerInput>().m_playerId);
-        GrabRight.AssignPlayerID(GetComponent<PlayerInput>().m_playerId);
+        if (m_isPlayer)
+        {
+            GrabLeft.AssignPlayerID(GetComponent<PlayerInput>().m_playerId);
+            GrabRight.AssignPlayerID(GetComponent<PlayerInput>().m_playerId);
+        }
     }
     //Call Update Functions
     void Update()
@@ -853,7 +863,7 @@ public class APRController : MonoBehaviour
     //////////////////////
     public void ActivateRagdoll()
     {
-
+        m_knockedOut.Invoke();
         ReachingRight = false;
         ReachingLeft = false;
         PickedUp = false;
@@ -899,7 +909,10 @@ public class APRController : MonoBehaviour
         APR_Parts[12].GetComponent<ConfigurableJoint>().angularYZDrive = DriveOff;
     }
 
-
+    public bool IsBalanced()
+    {
+        return balanced;
+    }
 
     /////////////////////////
     //Deactivate Full Ragdoll
@@ -980,7 +993,10 @@ public class APRController : MonoBehaviour
         COMP.position = CenterOfMassPoint;
     }
 
-
+    public bool IsKnockedOut()
+    {
+        return KnockedOut;
+    }
 
     ///////////////////
     //Editor Debug Mode

@@ -17,9 +17,9 @@ TagManager:
   - FoodObjects
   - Goal
   - ShoppingCart
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - PlayerDetection
   - 
   - 
   - 
