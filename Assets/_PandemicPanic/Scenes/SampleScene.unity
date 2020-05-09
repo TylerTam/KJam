@@ -244,9 +244,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerId: 1
-  m_changeThreshold: 0
+  m_changeThreshold: 0.25
   m_playerObject: {fileID: 0}
-  m_nextSceneIndex: 0
+  m_nextSceneIndex: 1
 --- !u!4 &417672418
 Transform:
   m_ObjectHideFlags: 0
@@ -335,7 +335,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.76e-43, y: -5.350185e+32, z: 4.5904e-41, w: -5.3501788e+32}
+  m_BoundingSphereOverride: {x: 7.7371252e+25, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

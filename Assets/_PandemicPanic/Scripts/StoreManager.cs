@@ -20,5 +20,10 @@ public class StoreManager : MonoBehaviour
         PlayerManager.Instance.SpawnPlayers(m_spawnPoints);
     }
 
+    public void AddScore(int p_playerId, int p_scoreToAdd)
+    {
+        m_playerScores[p_playerId] += p_scoreToAdd;
+    }
+
 
 }

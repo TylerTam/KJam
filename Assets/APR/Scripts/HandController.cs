@@ -7,13 +7,25 @@ public class HandController : MonoBehaviour
     public bool hasJoint;
     private bool hasWaitedAfterThrow = true;
 
-    bool m_pickupInputDown;
-
-
+    private bool m_pickupInputDown;
+    private int m_playerId;
+    private Pickupable m_pickup;
+    public void AssignPlayerID(int p_playerID)
+    {
+        m_playerId = p_playerID;
+    }
     public void ChangeHandInput(bool p_inputDown)
     {
         m_pickupInputDown = p_inputDown;
 
+        if (!p_inputDown)
+        {
+            if(m_pickup != null)
+            {
+                m_pickup.DropObject();
+                m_pickup = null;
+            }
+        }
         if (hasJoint && !p_inputDown)
         {
             this.gameObject.GetComponent<FixedJoint>().breakForce = 0;
@@ -38,6 +50,15 @@ public class HandController : MonoBehaviour
 
             if (col.gameObject.tag == "Object" && !hasJoint)
             {
+                m_pickup = col.gameObject.GetComponent<Pickupable>();
+                if (m_pickup != null)
+                {
+                    if (m_pickup.IsHeld())
+                    {
+                        return;
+                    }
+                    m_pickup.Pickup(m_playerId);
+                }
                 if (m_pickupInputDown && !hasJoint)
                 {
                     hasJoint = true;
@@ -45,6 +66,7 @@ public class HandController : MonoBehaviour
                     this.gameObject.AddComponent<FixedJoint>();
                     this.gameObject.GetComponent<FixedJoint>().breakForce = 100000;
                     this.gameObject.GetComponent<FixedJoint>().connectedBody = col.gameObject.GetComponent<Rigidbody>();
+
                 }
             }
 

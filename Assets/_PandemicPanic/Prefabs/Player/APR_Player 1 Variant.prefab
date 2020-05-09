@@ -60,36 +60,6 @@ Transform:
   m_Father: {fileID: 6732011682809918797}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6292462806891711620
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5445274231084003370}
-  m_Layer: 8
-  m_Name: Hat
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5445274231084003370
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6292462806891711620}
-  m_LocalRotation: {x: 0.34128028, y: 7.1054274e-15, z: 1.7763568e-15, w: 0.9399617}
-  m_LocalPosition: {x: 8.96417e-15, y: 0.394, z: 0.325}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6732011682532863256}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 39.910004, y: 0, z: 0}
 --- !u!114 &1221668210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +95,36 @@ MonoBehaviour:
   m_rightShoulderObj: {fileID: 0}
   m_leftShoulderObj: {fileID: 0}
   m_chestPlateObj: {fileID: 0}
+--- !u!1 &6292462806891711620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5445274231084003370}
+  m_Layer: 8
+  m_Name: Hat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5445274231084003370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6292462806891711620}
+  m_LocalRotation: {x: 0.34128028, y: 7.1054274e-15, z: 1.7763568e-15, w: 0.9399617}
+  m_LocalPosition: {x: 8.96417e-15, y: 0.394, z: 0.325}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6732011682532863256}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 39.910004, y: 0, z: 0}
 --- !u!1 &6532328796624164886
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +380,7 @@ PrefabInstance:
     - target: {fileID: 8067712694169478055, guid: 2a8b2c0f34dba35488b9b713b5812940,
         type: 3}
       propertyPath: m_jumpHeight
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8067712694169478055, guid: 2a8b2c0f34dba35488b9b713b5812940,
         type: 3}
@@ -391,6 +391,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ThrowForce
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8067712694169478055, guid: 2a8b2c0f34dba35488b9b713b5812940,
+        type: 3}
+      propertyPath: m_airSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8949684078518883314, guid: 2a8b2c0f34dba35488b9b713b5812940,
         type: 3}

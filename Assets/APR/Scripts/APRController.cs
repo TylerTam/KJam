@@ -15,6 +15,7 @@ public class APRController : MonoBehaviour
     [Header("Player Parameters")]
     //Player parameters
     public float MoveSpeed;
+    public float m_airSpeed;
     public float turnSpeed;
     public float balanceHeight;
     public float StepDuration;
@@ -161,8 +162,14 @@ public class APRController : MonoBehaviour
         LowerRightLegTarget = APR_Parts[8].GetComponent<ConfigurableJoint>().targetRotation;
         UpperLeftLegTarget = APR_Parts[9].GetComponent<ConfigurableJoint>().targetRotation;
         LowerLeftLegTarget = APR_Parts[10].GetComponent<ConfigurableJoint>().targetRotation;
-    }
 
+
+    }
+    private void Start()
+    {
+        GrabLeft.AssignPlayerID(GetComponent<PlayerInput>().m_playerId);
+        GrabRight.AssignPlayerID(GetComponent<PlayerInput>().m_playerId);
+    }
     //Call Update Functions
     void Update()
     {
@@ -187,8 +194,9 @@ public class APRController : MonoBehaviour
         }
     }
 
-    public void Move( Vector3 p_dir)
+    public void Move(Vector3 p_dir)
     {
+
 
         //Walk backward
         if (p_dir.magnitude > m_movementDeadzone && balanced && !KnockedOut)
@@ -199,14 +207,23 @@ public class APRController : MonoBehaviour
             APR_Parts[0].GetComponent<Rigidbody>().velocity = v3;
             Walk = true;
             isKeyDown = true;
-        }else if (p_dir.magnitude < m_movementDeadzone)
+        }
+        else if (p_dir.magnitude > m_movementDeadzone && !KnockedOut)
+        {
+
+            m_movementDir = p_dir;
+            var v3 = p_dir * m_airSpeed;
+            v3.y = APR_Parts[0].GetComponent<Rigidbody>().velocity.y;
+            APR_Parts[0].GetComponent<Rigidbody>().velocity = new Vector3(v3.x/2, v3.y, v3.z/2);
+        }
+        else if (p_dir.magnitude < m_movementDeadzone)
         {
             Walk = false;
             isKeyDown = false;
         }
     }
 
-    
+
 
     //Will probably have to change this to use the xbox onestick to look at a rotation
     public void TurnCharacter(bool p_turnRight, bool p_turnLeft)
@@ -464,7 +481,7 @@ public class APRController : MonoBehaviour
     void Balance()
     {
         //Reset variables when balanced
-        if (!Walk )
+        if (!Walk)
         {
             StepRight = false;
             StepLeft = false;
@@ -503,7 +520,7 @@ public class APRController : MonoBehaviour
             //checking which leg to step with based on direction
             if (Walk)
             {
-                
+
                 //right leg
                 if (Vector2.Distance(m_movementDir, APR_Parts[11].transform.position + transform.position) < Vector2.Distance(m_movementDir, APR_Parts[12].transform.position + transform.position) && !StepLeft && !Alert_Leg_Right)
                 {
@@ -521,7 +538,7 @@ public class APRController : MonoBehaviour
                 }
             }
 
-            
+
 
             //Step right
             if (StepRight)
@@ -539,7 +556,7 @@ public class APRController : MonoBehaviour
                     APR_Parts[9].GetComponent<ConfigurableJoint>().GetComponent<ConfigurableJoint>().targetRotation = new Quaternion(APR_Parts[9].GetComponent<ConfigurableJoint>().targetRotation.x - 0.12f * StepHeight / 2, APR_Parts[9].GetComponent<ConfigurableJoint>().targetRotation.y, APR_Parts[9].GetComponent<ConfigurableJoint>().targetRotation.z, APR_Parts[9].GetComponent<ConfigurableJoint>().targetRotation.w);
                 }
 
-               
+
 
 
                 //step duration
@@ -591,7 +608,7 @@ public class APRController : MonoBehaviour
                     Step_L_timer = 0;
                     StepLeft = false;
 
-                    if (Walk )
+                    if (Walk)
                     {
                         StepRight = true;
                     }
@@ -836,6 +853,16 @@ public class APRController : MonoBehaviour
     //////////////////////
     public void ActivateRagdoll()
     {
+
+        ReachingRight = false;
+        ReachingLeft = false;
+        PickedUp = false;
+        ResetPose = true;
+        GrabRight.ChangeHandInput(false);
+        GrabLeft.ChangeHandInput(false);
+
+
+
         balanced = false;
         KnockedOut = true;
 

@@ -52,7 +52,7 @@ public class PlayerManager : MonoBehaviour
         currentPlayer.m_startingAvatar = Instantiate(currentPlayer.m_playerObject, m_spawnPoints[m_players.IndexOf(currentPlayer)].position, m_spawnPoints[m_players.IndexOf(currentPlayer)].rotation);
 
         currentPlayer.m_startingAvatar.GetComponent<PlayerInput>().enabled = false;
-
+        currentPlayer.m_startingAvatar.GetComponent<PlayerInput>().m_playerId = p_playerID;
         p_playerObject = currentPlayer.m_startingAvatar;
     }
 
