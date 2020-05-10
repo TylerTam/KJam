@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerIdManager : MonoBehaviour
 {
+    public int m_playerType;
     public Transform m_helmet, m_rightShoulder, m_leftShoulder, m_chestPlate;
     [HideInInspector]
     public GameObject m_helmetObj, m_rightShoulderObj, m_leftShoulderObj, m_chestPlateObj;

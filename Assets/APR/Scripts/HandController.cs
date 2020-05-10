@@ -18,14 +18,7 @@ public class HandController : MonoBehaviour
     {
         m_pickupInputDown = p_inputDown;
 
-        if (!p_inputDown)
-        {
-            if(m_pickup != null)
-            {
-                m_pickup.DropObject();
-                m_pickup = null;
-            }
-        }
+
         if (hasJoint && !p_inputDown)
         {
             this.gameObject.GetComponent<FixedJoint>().breakForce = 0;
@@ -37,6 +30,15 @@ public class HandController : MonoBehaviour
         {
             hasJoint = false;
             hasWaitedAfterThrow = false;
+        }
+
+        if (!p_inputDown)
+        {
+            if (m_pickup != null)
+            {
+                m_pickup.DropObject();
+                m_pickup = null;
+            }
         }
     }
 
@@ -59,6 +61,8 @@ public class HandController : MonoBehaviour
                     }
                     m_pickup.Pickup(m_playerId);
                 }
+
+
                 if (m_pickupInputDown && !hasJoint)
                 {
                     hasJoint = true;
