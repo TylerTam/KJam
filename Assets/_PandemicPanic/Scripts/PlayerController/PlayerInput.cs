@@ -13,6 +13,13 @@ public class PlayerInput : MonoBehaviour
     public Transform m_facingForward;
     public float m_facingDirAngleThreshold;
 
+    private bool m_canControl = true;
+
+    public ImpactDetect m_knockOutDetect;
+
+    public float m_knockOutTime, m_knockOutSafeTime;
+    private float m_knockOutTimer;
+
     private void Start()
     {
 
@@ -37,9 +44,43 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        GetInput();
+        if (m_canControl) {
+            GetInput();
+
+
+            if (!m_knockOutDetect.m_canBeKnockedOut)
+            {
+                if(m_knockOutTimer > m_knockOutSafeTime)
+                {
+                    m_knockOutDetect.m_canBeKnockedOut = true;
+                }
+                else
+                {
+                    m_knockOutTimer += Time.deltaTime;
+                }
+            }
+        }
+        else
+        {
+            if(m_knockOutTimer > m_knockOutTime)
+            {
+                m_canControl = true;
+                m_knockOutTimer = 0;
+
+            }
+            else
+            {
+                m_knockOutTimer += Time.deltaTime;
+            }
+        }
     }
 
+    public void KnockedOut()
+    {
+        m_knockOutTimer = 0;
+        m_canControl = false;
+        m_knockOutDetect.m_canBeKnockedOut = false;
+    }
 
     public void GetInput()
     {
@@ -110,4 +151,12 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+
+    private void OnDisable()
+    {
+        if (m_ragdollController == null) return;
+        m_ragdollController.TurnCharacter(false, false);
+        m_ragdollController.RightPickupInput(false);
+        m_ragdollController.LeftPickupInput(false);
+    }
 }

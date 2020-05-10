@@ -19,8 +19,10 @@ public class PlayerManager : MonoBehaviour
         public GameObject m_helmet, m_rShoulder, m_lShoulder, m_chestPiece;
         public GameObject m_playerObject;
         public int m_playerID;
+        public int m_score;
 
         public GameObject m_startingAvatar;
+        public GameObject m_gameAvatar;
 
         public void RemoveFromList()
         {
@@ -95,7 +97,38 @@ public class PlayerManager : MonoBehaviour
             GameObject newPlayer = Instantiate(player.m_playerObject, p_spawns[m_players.IndexOf(player)].position, p_spawns[m_players.IndexOf(player)].rotation);
             newPlayer.GetComponent<PlayerIdManager>().AssignCosmetics(player.m_helmet, player.m_rShoulder, player.m_lShoulder, player.m_chestPiece);
             newPlayer.GetComponent<PlayerInput>().m_playerId = player.m_playerID;
-
+            player.m_gameAvatar = newPlayer;
+            m_playerCount += 1;
         }
+    }
+
+    public void ChangePlayerInputs(bool p_activeState)
+    {
+        foreach (PlayerProperties player in m_players)
+        {
+            player.m_gameAvatar.GetComponent<PlayerInput>().enabled = p_activeState;
+        }
+    }
+
+    public int GetPlayerCount()
+    {
+        return m_playerCount;
+    }
+
+    public PlayerProperties GetPlayerProperties(int p_playerId)
+    {
+        foreach (PlayerProperties player in m_players)
+        {
+            if(player.m_playerID == p_playerId)
+            {
+                return player;
+            }
+        }
+        return null;
+    }
+
+    public PlayerProperties GetPlayerPropertiesByIndex(int p_index)
+    {
+        return m_players[p_index];
     }
 }

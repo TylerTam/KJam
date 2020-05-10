@@ -11,6 +11,7 @@ public class ShoppingCart :MonoBehaviour, Pickupable, IObjective
 
     private StoreManager m_storeManager;
     private ObjectPooler m_pooler;
+    public Transform m_dropObjectPosition;
     [Header("Debugging")]
     public bool m_isDebugging;
     
@@ -54,5 +55,11 @@ public class ShoppingCart :MonoBehaviour, Pickupable, IObjective
             m_pooler.ReturnToPool(col.gameObject);
         }
     }
-    
+ 
+    public void DropFoodAboveCart(GameObject p_object)
+    {
+        p_object.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        p_object.transform.position = m_dropObjectPosition.position;
+        
+    }
 }

@@ -6,7 +6,7 @@ public class AddPoints : MonoBehaviour
 {
     public int m_addedPoints  = 1;
 
-    public int GetAddedPoints()
+    public virtual int GetAddedPoints()
     {
         return m_addedPoints;
     }

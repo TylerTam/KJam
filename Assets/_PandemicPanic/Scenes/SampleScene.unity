@@ -335,7 +335,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.7371252e+25, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 5.63e-43, y: -0.0000000012020438, z: 5.65e-43, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -656,9 +656,9 @@ MonoBehaviour:
   - {fileID: 2064575930}
   m_playerPrefabs:
   - {fileID: 3868667324680927636, guid: 084608b38de9baf45ae2f59af9529612, type: 3}
-  - {fileID: 3868667324680927636, guid: 084608b38de9baf45ae2f59af9529612, type: 3}
-  - {fileID: 3868667324680927636, guid: 084608b38de9baf45ae2f59af9529612, type: 3}
-  - {fileID: 3868667324680927636, guid: 084608b38de9baf45ae2f59af9529612, type: 3}
+  - {fileID: 5993071998855899263, guid: 28f0bf1b40801f54994c65a50cf2b3f7, type: 3}
+  - {fileID: 1256692204867616536, guid: aa4453c359ec52341bb33de4d9b4c203, type: 3}
+  - {fileID: 4178772261532519913, guid: fadbe893b00c7c445b9966d6dd9d6442, type: 3}
 --- !u!4 &1416558409
 Transform:
   m_ObjectHideFlags: 0
