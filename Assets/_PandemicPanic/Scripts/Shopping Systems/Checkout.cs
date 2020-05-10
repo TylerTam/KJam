@@ -6,19 +6,37 @@ public class Checkout : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<IObjective>() != null)
+        if (other.GetComponent<ShoppingCart>() != null)
         {
-            other.GetComponent<IObjective>().CheckObjective();
+            other.GetComponent<ShoppingCart>().ToggleInCheckout(true);
+            return;
         }
-        
-    }
-    private void OnTriggerStay(Collider other)
-    {
+
         if (other.gameObject.tag == "Object")
         {
             if (other.GetComponent<FoodObject>() != null)
             {
-                other.GetComponent<FoodObject>().AddHeldObjectToScore();
+                other.GetComponent<FoodObject>().ToggleInCheckout(true);
+                
+            }
+            return;
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<ShoppingCart>() != null)
+        {
+            other.GetComponent<ShoppingCart>().ToggleInCheckout(false);
+            return;
+        }
+
+        if (other.gameObject.tag == "Object")
+        {
+            if (other.GetComponent<FoodObject>() != null)
+            {
+                other.GetComponent<FoodObject>().ToggleInCheckout(false);
             }
             return;
         }

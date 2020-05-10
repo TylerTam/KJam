@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/_PandemicPanic/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/_PandemicPanic/Scenes/Testing Shopping Systems.unity
+    guid: 12c7c1ff553ff4545b987c92221135c7
+  - enabled: 1
     path: Assets/_PandemicPanic/Scenes/Levels/GroceryStore.unity
     guid: 906bf813bf2f44e4c85ea6f685478afe
   - enabled: 1
     path: Assets/_PandemicPanic/Scenes/SuperMarket.unity
     guid: b352f2a76fed0c7498a2112752a6de04
-  - enabled: 1
-    path: Assets/_PandemicPanic/Scenes/Testing Shopping Systems.unity
-    guid: 12c7c1ff553ff4545b987c92221135c7
   m_configObjects: {}

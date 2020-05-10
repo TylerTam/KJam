@@ -285,6 +285,16 @@ public class APRController : MonoBehaviour
         }
     }
 
+    public void StopPickup()
+    {
+        ReachingLeft = false;
+        ReachingRight = false;
+        PickedUp = false;
+        ResetPose = true;
+        GrabLeft.ChangeHandInput(false);       
+        GrabRight.ChangeHandInput(false);
+    }
+
     public void LeftPickupInput(bool p_inputDown)
     {
         //Reach Left

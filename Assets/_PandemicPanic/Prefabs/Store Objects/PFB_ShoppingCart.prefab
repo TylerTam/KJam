@@ -182,6 +182,7 @@ MonoBehaviour:
   m_cartOwner: 0
   m_castDimensions: {x: 4, y: 3, z: 3}
   m_dropObjectPosition: {fileID: 4513175610563443442}
+  m_checkoutTime: 3
   m_isDebugging: 1
   m_debuggingColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!65 &4513175611016388517
