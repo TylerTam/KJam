@@ -13,6 +13,8 @@ public class StoreManager : MonoBehaviour
     public float m_gameTime;
     public float m_endGameTime = 3;
 
+    [Header("Food Items")]
+    public List<FoodObject> m_foodItems;
 
     [Header("UI Elements")]
     public GameObject m_playerUIContainer;
@@ -22,8 +24,9 @@ public class StoreManager : MonoBehaviour
     public UnityEngine.UI.Text m_countdownText, m_matchTimeText, m_winningPlayerText;
 
     private List<PlayerScores> m_playerScores = new List<PlayerScores>();
-    
-    
+
+    private CosmeticAppearManager m_cosmetics;
+
 
     [System.Serializable]
     public class PlayerScores
@@ -37,6 +40,7 @@ public class StoreManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        m_cosmetics = GetComponent<CosmeticAppearManager>();
     }
     private void Start()
     {
@@ -97,7 +101,7 @@ public class StoreManager : MonoBehaviour
     private IEnumerator StartMatchTime()
     {
         float timer = m_startDelay;
-        while(timer > 0)
+        while (timer > 0)
         {
             timer -= Time.deltaTime;
             m_countdownText.text = timer.ToString("F0");
@@ -110,10 +114,11 @@ public class StoreManager : MonoBehaviour
     private IEnumerator MatchTime()
     {
         float timer = m_gameTime;
-        while(timer > 0)
+        while (timer > 0)
         {
             timer -= Time.deltaTime;
             m_matchTimeText.text = timer.ToString("F0");
+            m_cosmetics.CheckCosmeticAppearTime(timer);
             yield return null;
         }
         GameOver();
@@ -132,14 +137,14 @@ public class StoreManager : MonoBehaviour
     private string GetWinningPlayer()
     {
         PlayerScores winningPlayer = null;
-        foreach(PlayerScores player in m_playerScores)
+        foreach (PlayerScores player in m_playerScores)
         {
-            if(winningPlayer == null)
+            if (winningPlayer == null)
             {
                 winningPlayer = player;
                 continue;
             }
-            if(winningPlayer.m_score < player.m_score)
+            if (winningPlayer.m_score < player.m_score)
             {
                 winningPlayer = player;
             }
@@ -151,5 +156,35 @@ public class StoreManager : MonoBehaviour
     {
         yield return new WaitForSeconds(m_endGameTime);
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public List<FoodObject> GetRandomFoodObjects(int p_amount)
+    {
+        print("Random Food");
+        List<FoodObject> randomFood = new List<FoodObject>();
+        List<FoodObject> activeFoods = new List<FoodObject>(m_foodItems);
+        if(p_amount > activeFoods.Count)
+        {
+            p_amount = activeFoods.Count;
+        }
+        for (int i = 0; i < p_amount; i++)
+        {
+            randomFood.Add(activeFoods[Random.Range(0, activeFoods.Count)]);
+            activeFoods.Remove(randomFood[i]);
+        }
+        return randomFood;
+
+    }
+
+    public void RemoveDeactiveFood(FoodObject p_remove)
+    {
+        if (m_foodItems.Contains(p_remove))
+        {
+            m_foodItems.Remove(p_remove);
+        }
+        else
+        {
+            Debug.Log(p_remove.gameObject.name + " is missing from the store manager food list");
+        }
     }
 }

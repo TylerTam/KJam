@@ -6,44 +6,45 @@ public class CosmeticManager : MonoBehaviour
 {
     public static CosmeticManager Instance;
 
-    public List<GameObject> m_headCosmetics, m_rightShoulder, m_leftShoulder, m_chestPlate;
+    
+    [Tooltip("The individual's unlocks")]
+    public List<UnlockedCosmetics> m_playerCosmetics;
+    [System.Serializable]
+    public class UnlockedCosmetics
+    {
 
+        public int m_playerId;
+        public List<GameObject> m_headCosmetics, m_rightShoulder, m_leftShoulder, m_chestPlate;
+
+    }
+
+    [Tooltip("The reference for all the collectables")]
     public List<CosmeticUnlocks> m_unlockableCosmetics;
 
     [System.Serializable]
     public class CosmeticUnlocks
     {
+        public string m_cosmeticName;
+        public List<NewCosmetic> m_cosmeticReferences;
         
-        public List<NewCosmetic> m_cosmeticUnlock;
-        public int m_numberToUnlock;
-
-        public int m_currentCollected;
-        private bool m_unlocked;
-        public void CheckUnlock()
+        public void CheckUnlock(int p_playerId)
         {
-            if (m_unlocked) return;
-            m_currentCollected++;
-            if(m_currentCollected >= m_numberToUnlock)
+            switch (m_cosmeticReferences[0].m_myType)
             {
-                m_unlocked = true;
-                foreach(NewCosmetic cos in m_cosmeticUnlock)
-                {
-                    switch (cos.m_myType)
-                    {
-                        case NewCosmetic.CosmeticType.Helmet:
-                            CosmeticManager.Instance.AddHeadCosmetic(cos.m_cosmetic);
-                            break;
-                        case NewCosmetic.CosmeticType.LShoulder:
-                            CosmeticManager.Instance.AddLeftShoulderCosmetic(cos.m_cosmetic);
-                            break;
-                        case NewCosmetic.CosmeticType.RShoulder:
-                            CosmeticManager.Instance.AddRightShoulderCosmetics(cos.m_cosmetic);
-                            break;
-                        case NewCosmetic.CosmeticType.Chest:
-                            CosmeticManager.Instance.AddChestPlate(cos.m_cosmetic);
-                            break;
-                    }
-                }
+                case NewCosmetic.CosmeticType.Helmet:
+                    CosmeticManager.Instance.AddHeadCosmetic(p_playerId, m_cosmeticReferences[0].m_cosmetic);
+                    break;
+                case NewCosmetic.CosmeticType.LShoulder:
+                    CosmeticManager.Instance.AddLeftShoulderCosmetic(p_playerId, m_cosmeticReferences[0].m_cosmetic);
+                    CosmeticManager.Instance.AddRightShoulderCosmetics(p_playerId, m_cosmeticReferences[1].m_cosmetic);
+                    break;
+                case NewCosmetic.CosmeticType.RShoulder:
+                    CosmeticManager.Instance.AddLeftShoulderCosmetic(p_playerId, m_cosmeticReferences[0].m_cosmetic);
+                    CosmeticManager.Instance.AddRightShoulderCosmetics(p_playerId, m_cosmeticReferences[1].m_cosmetic);
+                    break;
+                case NewCosmetic.CosmeticType.Chest:
+                    CosmeticManager.Instance.AddChestPlate(p_playerId, m_cosmeticReferences[0].m_cosmetic);
+                    break;
             }
         }
 
@@ -69,56 +70,76 @@ public class CosmeticManager : MonoBehaviour
         }
     }
 
-    public void CheckCosmetic (int p_cosmeticType)
+    public void CheckCosmetic (int p_playerId, int p_cosmeticType)
     {
-        m_unlockableCosmetics[p_cosmeticType].CheckUnlock();
+        m_unlockableCosmetics[p_cosmeticType].CheckUnlock(p_playerId);
     }
 
-    public void AddHeadCosmetic(GameObject p_headPiece)
+    public void AddHeadCosmetic(int p_playerId,GameObject p_headPiece)
     {
-        if (!m_headCosmetics.Contains(p_headPiece))
+        if (!m_playerCosmetics[p_playerId].m_headCosmetics.Contains(p_headPiece))
         {
-            m_headCosmetics.Add(p_headPiece);
+            m_playerCosmetics[p_playerId].m_headCosmetics.Add(p_headPiece);
         }
     }
-    public void AddRightShoulderCosmetics(GameObject p_right)
+    public void AddRightShoulderCosmetics(int p_playerId, GameObject p_right)
     {
-        if (!m_rightShoulder.Contains(p_right))
+        if (!m_playerCosmetics[p_playerId].m_rightShoulder.Contains(p_right))
         {
-            m_rightShoulder.Add(p_right);
+            m_playerCosmetics[p_playerId].m_rightShoulder.Add(p_right);
         }
     }
-    public void AddLeftShoulderCosmetic(GameObject p_left)
+    public void AddLeftShoulderCosmetic(int p_playerId, GameObject p_left)
     {
-        if (!m_leftShoulder.Contains(p_left))
+        if (!m_playerCosmetics[p_playerId].m_leftShoulder.Contains(p_left))
         {
-            m_leftShoulder.Add(p_left);
+            m_playerCosmetics[p_playerId].m_leftShoulder.Add(p_left);
         }
     }
-    public void AddChestPlate(GameObject p_chestPlate)
+    public void AddChestPlate(int p_playerId, GameObject p_chestPlate)
     {
-        if (!m_chestPlate.Contains(p_chestPlate))
+        if (!m_playerCosmetics[p_playerId].m_chestPlate.Contains(p_chestPlate))
         {
-            m_chestPlate.Add(p_chestPlate);
+            m_playerCosmetics[p_playerId].m_chestPlate.Add(p_chestPlate);
         } 
     }
 
-    public GameObject GetHat(int p_index)
+    #region Toggling Between cosmetics on join screen
+
+    public GameObject GetHat(int p_playerId, ref int p_index, int p_selectionDirection)
     {
-        return m_headCosmetics[p_index];
+
+
+        return m_playerCosmetics[p_playerId].m_headCosmetics[GetNewIndex(ref p_index,p_selectionDirection, m_playerCosmetics[p_playerId].m_headCosmetics.Count)];
     }
-    public GameObject GetRightShoulder(int p_index)
+    public GameObject GetRightShoulder(int p_playerId, ref int p_index, int p_selectionDirection)
     {
-        return m_rightShoulder[p_index];
+
+        return m_playerCosmetics[p_playerId].m_rightShoulder[GetNewIndex(ref p_index, p_selectionDirection, m_playerCosmetics[p_playerId].m_rightShoulder.Count)];
 
     }
-    public GameObject GetLeftShoulder(int p_index)
+    public GameObject GetLeftShoulder(int p_playerId, ref int p_index, int p_selectionDirection)
     {
-        return m_leftShoulder[p_index];
+        return m_playerCosmetics[p_playerId].m_leftShoulder[GetNewIndex(ref p_index, p_selectionDirection, m_playerCosmetics[p_playerId].m_leftShoulder.Count)];
     }
-    public GameObject GetChestPlate(int p_index)
+    public GameObject GetChestPlate(int p_playerId, ref int p_index, int p_selectionDirection)
     {
-        return m_chestPlate[p_index];
+        return m_playerCosmetics[p_playerId].m_chestPlate[GetNewIndex(ref p_index, p_selectionDirection, m_playerCosmetics[p_playerId].m_chestPlate.Count)];
     }
 
+    private int GetNewIndex(ref int p_index, int p_selectionDirection, int p_listCount)
+    {
+        p_index += p_selectionDirection;
+        if (p_index == p_listCount)
+        {
+            p_index = 0;
+        }
+        else if (p_index < 0)
+        {
+            p_index = p_listCount - 1;
+        }
+        return p_index;
+    }
+
+    #endregion
 }

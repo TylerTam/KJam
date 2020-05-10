@@ -12,6 +12,7 @@ public class FoodObject : AddPoints, Pickupable
     [Header("Cosmetic Unlock")]
     public bool m_unlocksCosmetic;
     public int m_cosmeticType;
+    public GameObject m_cosmeticGlow;
 
     [Header("Debug Gizmos")]
     public bool m_debugGizmos;
@@ -19,6 +20,7 @@ public class FoodObject : AddPoints, Pickupable
 
     private WaitForSeconds m_searchDelay;
     private Coroutine m_searchCoroutune;
+    
     private void Awake()
     {
         m_searchDelay = new WaitForSeconds(.025f);
@@ -73,7 +75,7 @@ public class FoodObject : AddPoints, Pickupable
     {
         if (m_unlocksCosmetic)
         {
-            CosmeticManager.Instance.CheckCosmetic(m_cosmeticType);
+            CosmeticManager.Instance.CheckCosmetic(m_owner,m_cosmeticType);
         }
         return base.GetAddedPoints();
     }
@@ -89,4 +91,29 @@ public class FoodObject : AddPoints, Pickupable
     {
         return gameObject;
     }
+
+
+    #region Cosmetic Item 
+
+    public void ShowGlow(float p_time)
+    {
+        
+        StartCoroutine(ShowCosmeticGlow(p_time));
+        
+    }
+
+    private IEnumerator ShowCosmeticGlow(float p_time)
+    {
+        float timer = p_time;
+
+        m_cosmeticGlow.SetActive(true);
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        m_cosmeticGlow.SetActive(false);
+        m_unlocksCosmetic = false;
+    }
+    #endregion
 }

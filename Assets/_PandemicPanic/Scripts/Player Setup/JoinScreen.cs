@@ -93,15 +93,8 @@ public class JoinScreen : MonoBehaviour
         {
             case ChangeCosmetic.Hat:
                 m_playerIdManager.RemoveHelmet();
-                m_currentHat += p_dir;
-                if(m_currentHat == -1)
-                {
-                    m_currentHat = CosmeticManager.Instance.m_headCosmetics.Count;
-                }else if(m_currentHat >= CosmeticManager.Instance.m_headCosmetics.Count)
-                {
-                    m_currentHat = 0;
-                }
-                GameObject newHat = CosmeticManager.Instance.GetHat(m_currentHat);
+                
+                GameObject newHat = CosmeticManager.Instance.GetHat(m_playerId,ref m_currentHat, p_dir);
                 if(newHat != null)
                 {
                     m_playerIdManager.AssignHelmet(newHat);
@@ -111,17 +104,9 @@ public class JoinScreen : MonoBehaviour
                 #region Shoulders
                 m_playerIdManager.RemoveShoulders();
 
-                m_currentShoulder += p_dir;
-                if (m_currentShoulder == -1)
-                {
-                    m_currentShoulder = CosmeticManager.Instance.m_leftShoulder.Count;
-                }
-                else if (m_currentShoulder >= CosmeticManager.Instance.m_leftShoulder.Count)
-                {
-                    m_currentShoulder = 0;
-                }
-                GameObject rightShould = CosmeticManager.Instance.GetRightShoulder(m_currentShoulder);
-                GameObject leftShould = CosmeticManager.Instance.GetLeftShoulder(m_currentShoulder);
+
+                GameObject rightShould = CosmeticManager.Instance.GetRightShoulder(m_playerId, ref m_currentShoulder, p_dir);
+                GameObject leftShould = CosmeticManager.Instance.GetLeftShoulder(m_playerId, ref m_currentShoulder, 0);
                 if (rightShould != null)
                 {
                     m_playerIdManager.AssignShoulders(rightShould, leftShould);
@@ -130,16 +115,8 @@ public class JoinScreen : MonoBehaviour
                 break;
             case ChangeCosmetic.Chest:
                 m_playerIdManager.RemoveChest();
-                m_currentChest += p_dir;
-                if (m_currentChest == -1)
-                {
-                    m_currentChest = CosmeticManager.Instance.m_chestPlate.Count;
-                }
-                else if (m_currentChest >= CosmeticManager.Instance.m_chestPlate.Count)
-                {
-                    m_currentChest = 0;
-                }
-                GameObject newChest = CosmeticManager.Instance.GetChestPlate(m_currentChest);
+
+                GameObject newChest = CosmeticManager.Instance.GetChestPlate(m_playerId,ref m_currentChest, p_dir);
                 if (newChest != null)
                 {
                     m_playerIdManager.AssignChest(newChest);
@@ -187,6 +164,6 @@ public class JoinScreen : MonoBehaviour
 
     private void AssignPlayerCosmetics()
     {
-        PlayerManager.Instance.AssignPlayerCosmetics(m_playerId, CosmeticManager.Instance.GetHat(m_currentHat), CosmeticManager.Instance.GetRightShoulder(m_currentShoulder), CosmeticManager.Instance.GetLeftShoulder(m_currentShoulder), CosmeticManager.Instance.GetChestPlate(m_currentChest));
+        PlayerManager.Instance.AssignPlayerCosmetics(m_playerId, CosmeticManager.Instance.GetHat(m_playerId,ref m_currentHat, 0), CosmeticManager.Instance.GetRightShoulder(m_playerId, ref m_currentShoulder, 0), CosmeticManager.Instance.GetLeftShoulder(m_playerId, ref m_currentShoulder,0), CosmeticManager.Instance.GetChestPlate(m_playerId, ref m_currentChest, 0));
     }
 }
