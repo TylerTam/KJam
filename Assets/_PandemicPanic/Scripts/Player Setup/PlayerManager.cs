@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
 
     public class PlayerProperties
     {
-        public GameObject m_helmet, m_rShoulder, m_lShoulder, m_chestPiece;
+        public GameObject m_helmet, m_rShoulder, m_lShoulder, m_chestPiece, m_leftKnee, m_rightKnee;
         public GameObject m_playerObject;
         public int m_playerID;
         public int m_score;
@@ -76,7 +76,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void AssignPlayerCosmetics(int p_playerId, GameObject p_headPiece, GameObject p_rShould, GameObject p_lShould, GameObject p_chest)
+    public void AssignPlayerCosmetics(int p_playerId, GameObject p_headPiece, GameObject p_rShould, GameObject p_lShould, GameObject p_chest, GameObject p_leftKnee, GameObject p_rightKnee)
     {
         foreach (PlayerProperties player in m_players)
         {
@@ -86,6 +86,8 @@ public class PlayerManager : MonoBehaviour
                 player.m_rShoulder = p_rShould;
                 player.m_lShoulder = p_lShould;
                 player.m_chestPiece = p_chest;
+                player.m_leftKnee = p_leftKnee;
+                player.m_rightKnee = p_rightKnee;
             }
         }
     }
@@ -95,7 +97,7 @@ public class PlayerManager : MonoBehaviour
         foreach (PlayerProperties player in m_players)
         {
             GameObject newPlayer = Instantiate(player.m_playerObject, p_spawns[m_players.IndexOf(player)].position, p_spawns[m_players.IndexOf(player)].rotation);
-            newPlayer.GetComponent<PlayerIdManager>().AssignCosmetics(player.m_helmet, player.m_rShoulder, player.m_lShoulder, player.m_chestPiece);
+            newPlayer.GetComponent<PlayerIdManager>().AssignCosmetics(player.m_helmet, player.m_rShoulder, player.m_lShoulder, player.m_chestPiece, player.m_leftKnee,player.m_rightKnee);
             newPlayer.GetComponent<PlayerInput>().m_playerId = player.m_playerID;
             player.m_gameAvatar = newPlayer;
             m_playerCount += 1;

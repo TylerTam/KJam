@@ -1267,5 +1267,172 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cosmetic Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[0].m_leftKnee.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[0].m_rightKnee.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[1].m_leftKnee.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[1].m_rightKnee.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[2].m_leftKnee.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[2].m_rightKnee.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[3].m_leftKnee.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[3].m_rightKnee.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[0].m_leftKnee.Array.data[1]
+      value: 
+      objectReference: {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657,
+        type: 3}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[0].m_rightKnee.Array.data[1]
+      value: 
+      objectReference: {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657,
+        type: 3}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[1].m_leftKnee.Array.data[1]
+      value: 
+      objectReference: {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657,
+        type: 3}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[1].m_rightKnee.Array.data[1]
+      value: 
+      objectReference: {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657,
+        type: 3}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[2].m_leftKnee.Array.data[1]
+      value: 
+      objectReference: {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657,
+        type: 3}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[2].m_rightKnee.Array.data[1]
+      value: 
+      objectReference: {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657,
+        type: 3}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[3].m_leftKnee.Array.data[1]
+      value: 
+      objectReference: {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657,
+        type: 3}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_playerCosmetics.Array.data[3].m_rightKnee.Array.data[1]
+      value: 
+      objectReference: {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657,
+        type: 3}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.data[3].m_cosmeticName
+      value: PurpleChest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.data[2].m_cosmeticName
+      value: Purple Right Arm
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.data[2].m_cosmeticReferences.m_cosmetic
+      value: 
+      objectReference: {fileID: 5665825252424513330, guid: 07cadc460ca57e64ab02705df240ed8a,
+        type: 3}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.data[2].m_cosmeticReferences.m_myType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.data[1].m_cosmeticReferences.m_cosmetic
+      value: 
+      objectReference: {fileID: 5665825252424513330, guid: 07cadc460ca57e64ab02705df240ed8a,
+        type: 3}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.data[1].m_cosmeticReferences.m_myType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.data[1].m_cosmeticName
+      value: Purple Left Arm
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.data[4].m_cosmeticName
+      value: Purple Left Knee
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.data[5].m_cosmeticName
+      value: Purple Right Knee
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.data[4].m_cosmeticReferences.m_cosmetic
+      value: 
+      objectReference: {fileID: 5665825252424513330, guid: 07cadc460ca57e64ab02705df240ed8a,
+        type: 3}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.data[5].m_cosmeticReferences.m_cosmetic
+      value: 
+      objectReference: {fileID: 5665825252424513330, guid: 07cadc460ca57e64ab02705df240ed8a,
+        type: 3}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.data[5].m_cosmeticReferences.m_myType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450040800355770237, guid: 4ec40e47a5d977748b64b1ed9cba31eb,
+        type: 3}
+      propertyPath: m_unlockableCosmetics.Array.data[4].m_cosmeticReferences.m_myType
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ec40e47a5d977748b64b1ed9cba31eb, type: 3}
