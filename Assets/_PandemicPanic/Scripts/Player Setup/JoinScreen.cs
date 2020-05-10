@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 
+
 public class JoinScreen : MonoBehaviour
 {
 
@@ -23,6 +24,8 @@ public class JoinScreen : MonoBehaviour
 
     public int m_nextSceneIndex;
 
+    public SoundEvent m_join, m_disconnect;
+
     private void Start()
     {
         m_playerInputController = ReInput.players.GetPlayer(m_playerId);
@@ -34,6 +37,7 @@ public class JoinScreen : MonoBehaviour
         {
             if (m_playerInputController.GetButtonDown("Jump"))
             {
+                m_join.Invoke();
                 PlayerManager.Instance.AssignPlayer(m_playerId, out m_playerObject);
                 m_playerIdManager = m_playerObject.GetComponent<PlayerIdManager>();
                 m_currentHat = m_currentShoulder = m_currentChest = 0;
@@ -81,6 +85,7 @@ public class JoinScreen : MonoBehaviour
 
             if (m_playerInputController.GetButtonDown("Ragdoll"))
             {
+                m_disconnect.Invoke();
                 PlayerManager.Instance.RemovePlayer(m_playerId);
                 m_inMatch = false;
             }

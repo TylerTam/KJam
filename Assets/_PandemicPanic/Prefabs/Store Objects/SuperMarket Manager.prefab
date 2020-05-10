@@ -394,6 +394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4232654702825956563}
   - component: {fileID: 4232654702825956564}
+  - component: {fileID: 8152502233127574824}
   m_Layer: 0
   m_Name: SuperMarket Manager
   m_TagString: Untagged
@@ -439,8 +440,14 @@ MonoBehaviour:
   - {fileID: 4232654701628295315}
   - {fileID: 4232654701771627015}
   m_startDelay: 3
-  m_gameTime: 600
+  m_gameTime: 60
   m_endGameTime: 3
+  m_foodItems:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_playerUIContainer: {fileID: 7622125686646792220, guid: 1851e6e35618d514b96e570a0fc4277c,
     type: 3}
   m_uiColors:
@@ -461,6 +468,25 @@ MonoBehaviour:
   m_countdownText: {fileID: 4232654702492640781}
   m_matchTimeText: {fileID: 4232654703473617341}
   m_winningPlayerText: {fileID: 4232654701476716428}
+--- !u!114 &8152502233127574824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4232654702825956565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788e9fd217d424f41af579dc3d532a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cosmeticAppearTimes:
+  - m_numberOfItems: 2
+    m_spawnTime: 10
+    m_despawnTime: 20
+  - m_numberOfItems: 1
+    m_spawnTime: 30
+    m_despawnTime: 20
 --- !u!1 &4232654703091028412
 GameObject:
   m_ObjectHideFlags: 0

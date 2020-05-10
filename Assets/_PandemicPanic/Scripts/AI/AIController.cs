@@ -52,6 +52,13 @@ public class AIController : MonoBehaviour
     private APRController m_targetPlayerController;
 
 
+    [Header("Events")]
+    public AiEventsContainer m_aiEvents;
+    [System.Serializable]
+    public struct AiEventsContainer
+    {
+        public SoundEvent m_chase, m_ko, m_wander;
+    }
 
 
     private void Awake()
@@ -89,6 +96,10 @@ public class AIController : MonoBehaviour
 
         if (p_newState == 1)
         {
+            if(m_currentState == AiState.Search)
+            {
+                m_aiEvents.m_wander.Invoke();
+            }
             m_currentState = AiState.Wander;
             m_currentTargetPlayer = null;
             GetNewPath();
@@ -96,6 +107,7 @@ public class AIController : MonoBehaviour
         else if (p_newState == 2 && m_currentState != AiState.KnockedOut)
         {
             if (m_currentState == AiState.Chase) return;
+            m_aiEvents.m_chase.Invoke();
             m_currentState = AiState.Chase;
             m_currentTargetPlayer = m_vision.GetComponent<VisionCone>().GetFirstDetectedPlayer().gameObject;
             m_targetPlayerController = m_currentTargetPlayer.transform.parent.GetComponent<APRController>();
@@ -109,6 +121,7 @@ public class AIController : MonoBehaviour
         }
         else if (p_newState == 4)
         {
+            m_aiEvents.m_ko.Invoke();
             m_currentState = AiState.KnockedOut;
             m_faintTimer = 0;
             m_currentFaintTime = Random.Range(m_faintTime.x, m_faintTime.y);
