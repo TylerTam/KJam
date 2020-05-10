@@ -12,4 +12,6 @@ public interface Pickupable
     bool IsHeld();
 
     void DropObject();
+
+    GameObject ReturnGameObject();
 }

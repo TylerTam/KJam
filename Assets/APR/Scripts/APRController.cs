@@ -875,6 +875,7 @@ public class APRController : MonoBehaviour
 
         balanced = false;
         KnockedOut = true;
+        isJumping = false;
 
         //Root
         APR_Parts[0].GetComponent<ConfigurableJoint>().angularXDrive = DriveOff;

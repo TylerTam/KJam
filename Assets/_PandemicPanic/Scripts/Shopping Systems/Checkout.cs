@@ -6,6 +6,21 @@ public class Checkout : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<IObjective>().CheckObjective();
+        if (other.GetComponent<IObjective>() != null)
+        {
+            other.GetComponent<IObjective>().CheckObjective();
+        }
+        
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Object")
+        {
+            if (other.GetComponent<FoodObject>() != null)
+            {
+                other.GetComponent<FoodObject>().AddHeldObjectToScore();
+            }
+            return;
+        }
     }
 }

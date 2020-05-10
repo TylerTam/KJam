@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class FoodObject : AddPoints, Pickupable
 {
-
-    private bool m_held;
-
+    private int m_owner;
+    private bool m_held, m_dropped;
     public float m_detectRadius;
     public LayerMask m_shoppingCartLayer;
 
@@ -27,6 +26,7 @@ public class FoodObject : AddPoints, Pickupable
     public void DropObject()
     {
         m_held = false;
+        m_dropped = true;
         m_searchCoroutune = StartCoroutine(DelayDetect());
     }
 
@@ -35,6 +35,7 @@ public class FoodObject : AddPoints, Pickupable
         yield return m_searchDelay;
         SearchForCart();
         m_searchCoroutune = null;
+        m_dropped = false;
     }
     public bool IsHeld()
     {
@@ -44,7 +45,8 @@ public class FoodObject : AddPoints, Pickupable
     public void Pickup(int p_owner)
     {
         m_held = true;
-        if(m_searchCoroutune != null)
+        m_owner = p_owner;
+        if (m_searchCoroutune != null)
         {
             StopCoroutine(m_searchCoroutune);
         }
@@ -57,6 +59,14 @@ public class FoodObject : AddPoints, Pickupable
         {
             hits[0].transform.GetComponent<ShoppingCart>().DropFoodAboveCart(gameObject);
         }
+    }
+
+    public void AddHeldObjectToScore()
+    {
+        if (!m_dropped) return;
+        StoreManager.Instance.AddScore(m_owner, GetAddedPoints());
+        GetAddedPoints();
+        ObjectPooler.Instance.ReturnToPool(gameObject);
     }
 
     public override int GetAddedPoints()
@@ -73,5 +83,10 @@ public class FoodObject : AddPoints, Pickupable
         if (!m_debugGizmos) return;
         Gizmos.color = m_gizColors;
         Gizmos.DrawWireSphere(transform.position, m_detectRadius);
+    }
+
+    public GameObject ReturnGameObject()
+    {
+        return gameObject;
     }
 }
