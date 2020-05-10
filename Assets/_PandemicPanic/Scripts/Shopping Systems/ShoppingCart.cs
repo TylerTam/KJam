@@ -62,4 +62,9 @@ public class ShoppingCart :MonoBehaviour, Pickupable, IObjective
         p_object.transform.position = m_dropObjectPosition.position;
         
     }
+
+    public GameObject ReturnGameObject()
+    {
+        return gameObject;
+    }
 }

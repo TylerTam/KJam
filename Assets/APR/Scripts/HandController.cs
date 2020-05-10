@@ -50,7 +50,7 @@ public class HandController : MonoBehaviour
         if (APR_Player.useControls && hasWaitedAfterThrow)
         {
 
-            if (col.gameObject.tag == "Object" && !hasJoint)
+            if (col.gameObject.tag == "Object" && !hasJoint && APR_Player.m_isPlayer)
             {
                 m_pickup = col.gameObject.GetComponent<Pickupable>();
                 if (m_pickup != null)

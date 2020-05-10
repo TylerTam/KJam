@@ -11,12 +11,15 @@ public class AIController : MonoBehaviour
     public Transform m_calculateTransform;
     private APRController m_ragdollController;
 
+
+    public bool m_useGlobalPoints;
     private AIManager m_aiManager;
     public NavMeshAgent m_agent;
 
 
 
     [Header("Movement Properties")]
+    public AIArea m_patrolArea;
     public float m_stoppingDistance;
     public float m_patrolSpeed;
     public float m_chaseSpeed;
@@ -41,6 +44,7 @@ public class AIController : MonoBehaviour
 
     [Header("Player Detection")]
     public VisionCone m_vision;
+    public bool m_punchPlayer;
     private Vector3 m_lastKnownPosition;
     public float m_searchTime;
     private float m_currentSearchTimer;
@@ -58,16 +62,18 @@ public class AIController : MonoBehaviour
     }
     private void Start()
     {
-        m_aiManager = AIManager.Instance;
+        if (m_useGlobalPoints)
+        {
+            m_aiManager = AIManager.Instance;
+        }
         GetNewPatrolRoute();
 
     }
 
     private void Update()
     {
-
-
-
+        m_ragdollController.LeftPickupInput(true);
+        m_ragdollController.RightPickupInput(true);
         CheckState();
     }
     /// <summary>
@@ -79,6 +85,7 @@ public class AIController : MonoBehaviour
     {
         m_ragdollController.LeftPickupInput(false);
         m_ragdollController.RightPickupInput(false);
+
 
         if (p_newState == 1)
         {
@@ -198,7 +205,8 @@ public class AIController : MonoBehaviour
     /// </summary>
     private void GetNewPatrolRoute()
     {
-        m_patrolRoute = m_aiManager.GetRandomPatrolRoute();
+
+        m_patrolRoute = (m_useGlobalPoints) ? m_aiManager.GetRandomPatrolRoute() : m_patrolArea.GetRandomPatrolRoute();
         GetNewPatrolPoint();
     }
 
@@ -245,7 +253,7 @@ public class AIController : MonoBehaviour
         {
             ChangeState(1);
             m_ragdollController.DeactivateRagdoll();
-            
+
         }
         else
         {
@@ -265,14 +273,15 @@ public class AIController : MonoBehaviour
 
         if (CloseToPoint(m_currentTargetPlayer.transform.position, m_startPunchingDistance))
         {
-            /*if (m_punchTimer > m_punchRate)
+            if (m_punchPlayer)
             {
-                m_ragdollController.PunchInput(!m_leftPunch, m_leftPunch);
-                m_leftPunch = !m_leftPunch;
-                m_punchTimer = 0;
-            }*/
-            m_ragdollController.LeftPickupInput(true);
-            m_ragdollController.RightPickupInput(true);
+                if (m_punchTimer > m_punchRate)
+                {
+                    m_ragdollController.PunchInput(!m_leftPunch, m_leftPunch);
+                    m_leftPunch = !m_leftPunch;
+                    m_punchTimer = 0;
+                }
+            }
         }
         m_punchTimer += Time.deltaTime;
 

@@ -41,11 +41,23 @@ public class StoreManager : MonoBehaviour
     private void Start()
     {
         PlayerManager.Instance.SpawnPlayers(m_spawnPoints);
+
+        SetupCamera();
+
         PlayerManager.Instance.ChangePlayerInputs(false);
         CreateScoreMenu();
         StartCoroutine(StartMatchTime());
     }
 
+    private void SetupCamera()
+    {
+        List<GameObject> playerRoots = new List<GameObject>();
+        for (int i = 0; i < PlayerManager.Instance.GetPlayerCount(); i++)
+        {
+            playerRoots.Add(PlayerManager.Instance.GetPlayerPropertiesByIndex(i).m_gameAvatar.GetComponent<APRController>().Root);
+        }
+        CameraBehaviour.Instance.AssignPlayer(playerRoots);
+    }
     private void CreateScoreMenu()
     {
         for (int i = 0; i < PlayerManager.Instance.GetPlayerCount(); i++)
