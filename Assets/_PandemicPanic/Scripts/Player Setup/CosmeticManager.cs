@@ -35,21 +35,27 @@ public class CosmeticManager : MonoBehaviour
             {
                 case NewCosmetic.CosmeticType.Helmet:
                     CosmeticManager.Instance.AddHeadCosmetic(p_playerId, m_cosmeticReferences.m_cosmetic);
+                    PlayerManager.Instance.GetPlayerProperties(p_playerId).m_gameAvatar.GetComponent<PlayerIdManager>().AssignHelmet(m_cosmeticReferences.m_cosmetic);
                     break;
                 case NewCosmetic.CosmeticType.LShoulder:
                     CosmeticManager.Instance.AddLeftShoulderCosmetic(p_playerId, m_cosmeticReferences.m_cosmetic);
+                    PlayerManager.Instance.GetPlayerProperties(p_playerId).m_gameAvatar.GetComponent<PlayerIdManager>().AssignLeftShoulder(m_cosmeticReferences.m_cosmetic);
                     break;
                 case NewCosmetic.CosmeticType.RShoulder:
                     CosmeticManager.Instance.AddRightShoulderCosmetics(p_playerId, m_cosmeticReferences.m_cosmetic);
+                    PlayerManager.Instance.GetPlayerProperties(p_playerId).m_gameAvatar.GetComponent<PlayerIdManager>().AssignRightShoulder(m_cosmeticReferences.m_cosmetic);
                     break;
                 case NewCosmetic.CosmeticType.Chest:
                     CosmeticManager.Instance.AddChestPlate(p_playerId, m_cosmeticReferences.m_cosmetic);
+                    PlayerManager.Instance.GetPlayerProperties(p_playerId).m_gameAvatar.GetComponent<PlayerIdManager>().AssignChest(m_cosmeticReferences.m_cosmetic);
                     break;
                 case NewCosmetic.CosmeticType.LKnee:
                     CosmeticManager.Instance.AddLeftKnee(p_playerId, m_cosmeticReferences.m_cosmetic);
+                    PlayerManager.Instance.GetPlayerProperties(p_playerId).m_gameAvatar.GetComponent<PlayerIdManager>().AssignLeftKnee(m_cosmeticReferences.m_cosmetic);
                     break;
                 case NewCosmetic.CosmeticType.RKnee:
                     CosmeticManager.Instance.AddRightKnee(p_playerId, m_cosmeticReferences.m_cosmetic);
+                    PlayerManager.Instance.GetPlayerProperties(p_playerId).m_gameAvatar.GetComponent<PlayerIdManager>().AssignRightKnee(m_cosmeticReferences.m_cosmetic);
                     break;
             }
         }
@@ -89,6 +95,7 @@ public class CosmeticManager : MonoBehaviour
         ///Gets a specific unlock
         /// m_unlockableCosmetics[p_cosmeticType].CheckUnlock(p_playerId);
         /// 
+        if (m_playerCosmetics[p_playerId].m_unlockables.Count == 0) return;
         int randomUnlock = Random.Range(0,m_playerCosmetics[p_playerId].m_unlockables.Count);
         m_playerCosmetics[p_playerId].m_unlockables[randomUnlock].CheckUnlock(p_playerId);
         m_playerCosmetics[p_playerId].m_unlockables.RemoveAt(randomUnlock);
