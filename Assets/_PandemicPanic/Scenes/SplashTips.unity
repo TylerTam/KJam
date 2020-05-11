@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8a9b2228bd772946a70215462d089fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CountDown: 7
+  CountDown: 12
 --- !u!1 &1612369591
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeRate: 2
-  FadeTimer: 4
+  FadeTimer: 8
   image: {fileID: 0}
 --- !u!114 &1873794164
 MonoBehaviour:
