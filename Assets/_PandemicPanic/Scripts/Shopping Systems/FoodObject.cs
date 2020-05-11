@@ -27,10 +27,12 @@ public class FoodObject : AddPoints, Pickupable
 
     private WaitForSeconds m_searchDelay;
     private Coroutine m_searchCoroutune;
+    private Rigidbody m_rigidBody;
 
     private void Awake()
     {
         m_searchDelay = new WaitForSeconds(.025f);
+        m_rigidBody = GetComponent<Rigidbody>();
     }
     public void DropObject()
     {
@@ -80,6 +82,7 @@ public class FoodObject : AddPoints, Pickupable
     }
     public void Pickup(int p_owner)
     {
+        m_rigidBody.isKinematic = false;
         m_held = true;
         m_owner = p_owner;
         if (m_searchCoroutune != null)

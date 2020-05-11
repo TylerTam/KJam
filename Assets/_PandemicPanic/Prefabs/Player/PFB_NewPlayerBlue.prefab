@@ -716,7 +716,7 @@ MonoBehaviour:
   ThrowForce: 10
   FeetMountForce: 25
   m_playerGravity: 9.8
-  m_jumpHeight: 0.5
+  m_jumpHeight: 3
   Root: {fileID: 6256134234786464094}
   Body: {fileID: 6256134234530068827}
   Head: {fileID: 6256134234333503424}
