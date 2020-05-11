@@ -176,6 +176,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.66666675
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 70f433f2619f0024aa2ac39c456a3130,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 70f433f2619f0024aa2ac39c456a3130,
         type: 3}
       propertyPath: m_Name
