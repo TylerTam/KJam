@@ -15,6 +15,8 @@ public class CosmeticManager : MonoBehaviour
 
         public int m_playerId;
         public List<GameObject> m_headCosmetics, m_rightShoulder, m_leftShoulder, m_chestPlate, m_leftKnee, m_rightKnee;
+        //[HideInInspector]
+        public List<CosmeticUnlocks> m_unlockables;
 
     }
 
@@ -52,6 +54,8 @@ public class CosmeticManager : MonoBehaviour
             }
         }
 
+
+
         [System.Serializable]
         public class NewCosmetic
         {
@@ -73,10 +77,22 @@ public class CosmeticManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    private void Start()
+    {
+        foreach(UnlockedCosmetics player in m_playerCosmetics)
+        {
+            player.m_unlockables = new List<CosmeticUnlocks>(m_unlockableCosmetics);
+        }
+    }
     public void CheckCosmetic (int p_playerId, int p_cosmeticType)
     {
-        m_unlockableCosmetics[p_cosmeticType].CheckUnlock(p_playerId);
+        ///Gets a specific unlock
+        /// m_unlockableCosmetics[p_cosmeticType].CheckUnlock(p_playerId);
+        /// 
+        int randomUnlock = Random.Range(0,m_playerCosmetics[p_playerId].m_unlockables.Count);
+        m_playerCosmetics[p_playerId].m_unlockables[randomUnlock].CheckUnlock(p_playerId);
+        m_playerCosmetics[p_playerId].m_unlockables.RemoveAt(randomUnlock);
+
     }
 
     public void AddHeadCosmetic(int p_playerId,GameObject p_headPiece)
@@ -129,8 +145,8 @@ public class CosmeticManager : MonoBehaviour
     public GameObject GetHat(int p_playerId, ref int p_index, int p_selectionDirection)
     {
 
-
-        return m_playerCosmetics[p_playerId].m_headCosmetics[GetNewIndex(ref p_index,p_selectionDirection, m_playerCosmetics[p_playerId].m_headCosmetics.Count)];
+        GameObject  hat = m_playerCosmetics[p_playerId].m_headCosmetics[GetNewIndex(ref p_index, p_selectionDirection, m_playerCosmetics[p_playerId].m_headCosmetics.Count)];
+        return hat;
     }
     public GameObject GetRightShoulder(int p_playerId, ref int p_index, int p_selectionDirection)
     {

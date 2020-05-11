@@ -47,71 +47,115 @@ MonoBehaviour:
   - m_playerId: 0
     m_headCosmetics:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
     m_rightShoulder:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
     m_leftShoulder:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
     m_chestPlate:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
+    m_leftKnee:
+    - {fileID: 0}
+    m_rightKnee:
+    - {fileID: 0}
+    m_unlockables: []
   - m_playerId: 0
     m_headCosmetics:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
     m_rightShoulder:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
     m_leftShoulder:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
     m_chestPlate:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
+    m_leftKnee:
+    - {fileID: 0}
+    m_rightKnee:
+    - {fileID: 0}
+    m_unlockables: []
   - m_playerId: 0
     m_headCosmetics:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
     m_rightShoulder:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
     m_leftShoulder:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
     m_chestPlate:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
+    m_leftKnee:
+    - {fileID: 0}
+    m_rightKnee:
+    - {fileID: 0}
+    m_unlockables: []
   - m_playerId: 0
     m_headCosmetics:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
     m_rightShoulder:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
     m_leftShoulder:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
     m_chestPlate:
     - {fileID: 0}
-    - {fileID: 4699995054787119363, guid: 53fdd2cd8cf13d7458eeb06e96eed657, type: 3}
+    m_leftKnee:
+    - {fileID: 0}
+    m_rightKnee:
+    - {fileID: 0}
+    m_unlockables: []
+  - m_playerId: 0
+    m_headCosmetics:
+    - {fileID: 0}
+    m_rightShoulder:
+    - {fileID: 0}
+    m_leftShoulder:
+    - {fileID: 0}
+    m_chestPlate:
+    - {fileID: 0}
+    m_leftKnee:
+    - {fileID: 0}
+    m_rightKnee:
+    - {fileID: 0}
+    m_unlockables: []
+  - m_playerId: 0
+    m_headCosmetics:
+    - {fileID: 0}
+    m_rightShoulder:
+    - {fileID: 0}
+    m_leftShoulder:
+    - {fileID: 0}
+    m_chestPlate:
+    - {fileID: 0}
+    m_leftKnee:
+    - {fileID: 0}
+    m_rightKnee:
+    - {fileID: 0}
+    m_unlockables: []
   m_unlockableCosmetics:
-  - m_cosmeticName: Purple Helmet
+  - m_cosmeticName: Cardboard Helmet
     m_cosmeticReferences:
-    - m_myType: 0
-      m_cosmetic: {fileID: 5665825252424513330, guid: 07cadc460ca57e64ab02705df240ed8a,
+      m_myType: 3
+      m_cosmetic: {fileID: 5818286345793641475, guid: f63b9726d3a0c43469ca228251cde7e4,
         type: 3}
-  - m_cosmeticName: Purple Shoulders
+  - m_cosmeticName: Cardboard LShould
     m_cosmeticReferences:
-    - m_myType: 1
-      m_cosmetic: {fileID: 5665825252424513330, guid: 07cadc460ca57e64ab02705df240ed8a,
+      m_myType: 2
+      m_cosmetic: {fileID: 7291024017750936901, guid: 4f59df168ca360249b4cca0849177416,
         type: 3}
-    - m_myType: 2
-      m_cosmetic: {fileID: 5665825252424513330, guid: 07cadc460ca57e64ab02705df240ed8a,
-        type: 3}
-  - m_cosmeticName: PurpleChest
+  - m_cosmeticName: Cardboard RShould
     m_cosmeticReferences:
-    - m_myType: 3
-      m_cosmetic: {fileID: 5665825252424513330, guid: 07cadc460ca57e64ab02705df240ed8a,
+      m_myType: 1
+      m_cosmetic: {fileID: 3861793345442100350, guid: f33c800159119744798a1669e9857726,
+        type: 3}
+  - m_cosmeticName: Cardboard Chest
+    m_cosmeticReferences:
+      m_myType: 3
+      m_cosmetic: {fileID: 1077171922152046502, guid: d3dba881c19a9e1488f7fe7e967f05a7,
+        type: 3}
+  - m_cosmeticName: Cardboard LKnee
+    m_cosmeticReferences:
+      m_myType: 4
+      m_cosmetic: {fileID: 3825135337972848454, guid: 7d240bb62ec7fce429f318ee5aacc2d7,
+        type: 3}
+  - m_cosmeticName: Cardboard RKnee
+    m_cosmeticReferences:
+      m_myType: 5
+      m_cosmetic: {fileID: 7524972453101222789, guid: dc21fd8c7a9c75d438f8d01b276a4cda,
         type: 3}
