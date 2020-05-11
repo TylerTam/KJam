@@ -153,7 +153,7 @@ public class StoreManager : MonoBehaviour
     private IEnumerator EndGameTimer()
     {
         yield return new WaitForSeconds(m_endGameTime);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
     public List<FoodObject> GetRandomFoodObjects(int p_amount)
