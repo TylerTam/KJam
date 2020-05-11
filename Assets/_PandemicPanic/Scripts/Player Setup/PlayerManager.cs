@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
 
         public void RemoveFromList()
         {
-            PlayerManager.Instance.m_playerPrefabs.Add(m_playerObject);
+            //PlayerManager.Instance.m_playerPrefabs.Add(m_playerObject);
             Destroy(m_startingAvatar);
             PlayerManager.Instance.m_players.Remove(this);
         }
@@ -45,11 +45,11 @@ public class PlayerManager : MonoBehaviour
 
     public void AssignPlayer(int p_playerID, out GameObject p_playerObject)
     {
-        int randomPlayer = Random.Range(0, m_playerPrefabs.Count);
+        
         PlayerProperties currentPlayer = new PlayerProperties();
         currentPlayer.m_playerID = p_playerID;
-        currentPlayer.m_playerObject = m_playerPrefabs[randomPlayer];
-        m_playerPrefabs.RemoveAt(randomPlayer);
+        currentPlayer.m_playerObject = m_playerPrefabs[m_players.Count];
+
         m_players.Add(currentPlayer);
 
         currentPlayer.m_startingAvatar = Instantiate(currentPlayer.m_playerObject, m_spawnPoints[m_players.IndexOf(currentPlayer)].position, m_spawnPoints[m_players.IndexOf(currentPlayer)].rotation);

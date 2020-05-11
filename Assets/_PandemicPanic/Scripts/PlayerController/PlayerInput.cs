@@ -82,6 +82,7 @@ public class PlayerInput : MonoBehaviour
         m_knockOutDetect.m_canBeKnockedOut = false;
     }
 
+    public Vector3 m_aim;
     public void GetInput()
     {
         #region Movement Input
@@ -89,6 +90,8 @@ public class PlayerInput : MonoBehaviour
         m_ragdollController.Move(new Vector3(m_playerInputController.GetAxis("MoveHorizon"), 0, m_playerInputController.GetAxis("MoveVertical")));
 
         Vector3 facingDir = new Vector3(m_playerInputController.GetAxis("LookHorizon"),0, m_playerInputController.GetAxis("LookVertical"));
+        m_aim = facingDir;
+
 
         if (Vector3.Angle(new Vector3(m_facingForward.forward.x, 0, m_facingForward.forward.z),facingDir) > m_facingDirAngleThreshold)
         {
@@ -113,10 +116,12 @@ public class PlayerInput : MonoBehaviour
         #region Arm Inputs
         if (m_playerInputController.GetButtonDown("LeftPickup"))
         {
+            print("LArm");
             m_ragdollController.LeftPickupInput(true);
         }
         if (m_playerInputController.GetButtonUp("LeftPickup"))
         {
+            print("RArm");
             m_ragdollController.LeftPickupInput(false);
         }
 

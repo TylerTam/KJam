@@ -17,8 +17,7 @@ public class StoreManager : MonoBehaviour
     public List<FoodObject> m_foodItems;
 
     [Header("UI Elements")]
-    public GameObject m_playerUIContainer;
-    public List<Color> m_uiColors;
+    public List<GameObject> m_playerUIContainer;
     public List<string> m_uiColorNames;
     public List<Transform> m_uiPos;
     public UnityEngine.UI.Text m_countdownText, m_matchTimeText, m_winningPlayerText;
@@ -66,7 +65,7 @@ public class StoreManager : MonoBehaviour
     {
         for (int i = 0; i < PlayerManager.Instance.GetPlayerCount(); i++)
         {
-            GameObject uiElement = Instantiate(m_playerUIContainer, m_uiPos[i]);
+            GameObject uiElement = Instantiate(m_playerUIContainer[i], m_uiPos[i]);
             PlayerScores newScore = new PlayerScores();
 
 
@@ -74,7 +73,6 @@ public class StoreManager : MonoBehaviour
             newScore.m_scoreText = uiElement.GetComponentInChildren<UnityEngine.UI.Text>();
             newScore.m_scoreText.text = "0";
             newScore.m_playerColorType = PlayerManager.Instance.GetPlayerPropertiesByIndex(i).m_gameAvatar.GetComponent<PlayerIdManager>().m_playerType;
-            uiElement.GetComponentInChildren<UnityEngine.UI.Image>().color = m_uiColors[newScore.m_playerColorType];
             m_playerScores.Add(newScore);
         }
     }

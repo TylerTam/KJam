@@ -448,18 +448,16 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  m_playerUIContainer: {fileID: 7622125686646792220, guid: 1851e6e35618d514b96e570a0fc4277c,
-    type: 3}
-  m_uiColors:
-  - {r: 0, g: 0.79005766, b: 1, a: 1}
-  - {r: 1, g: 0.042452812, b: 0.042452812, a: 1}
-  - {r: 1, g: 0.9964248, b: 0, a: 1}
-  - {r: 0.9433962, g: 0.32484868, b: 0.8517277, a: 1}
+  m_playerUIContainer:
+  - {fileID: 7622125686646792220, guid: 1851e6e35618d514b96e570a0fc4277c, type: 3}
+  - {fileID: 6344018570088365844, guid: 66ab514d92a90e646a0760c44c034a3a, type: 3}
+  - {fileID: 5028164355285526811, guid: d99759ec004d6394ab43b67f5a3c806f, type: 3}
+  - {fileID: 2790871000290415065, guid: 7872b6c7ff815414aa44310d5fc46a21, type: 3}
   m_uiColorNames:
-  - Blue Player
-  - Red Player
-  - Yellow Player
-  - Purple Player
+  - Shopper 1
+  - Shopper 2
+  - Shopper 3
+  - Shopper 4
   m_uiPos:
   - {fileID: 4232654703488997558}
   - {fileID: 4232654703336067908}
@@ -743,6 +741,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 62, y: -12}
+  m_AnchoredPosition: {x: 71.7, y: -12}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 1}
