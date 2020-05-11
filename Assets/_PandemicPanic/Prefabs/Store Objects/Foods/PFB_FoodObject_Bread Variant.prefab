@@ -20,6 +20,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8927716820442779342, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
+        type: 3}
+      propertyPath: m_addedPoints
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -78,7 +83,7 @@ PrefabInstance:
     - target: {fileID: 8927716820442779380, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
         type: 3}
       propertyPath: m_Name
-      value: PFB_FoodObject_Bread
+      value: PFB_FoodObject_Bread Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387, type: 3}
