@@ -24,37 +24,37 @@ PrefabInstance:
     - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.859
+      value: 26.74
       objectReference: {fileID: 0}
     - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.488
+      value: 2.27
       objectReference: {fileID: 0}
     - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.987
+      value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.35666028
       objectReference: {fileID: 0}
     - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.93423414
       objectReference: {fileID: 0}
     - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
         type: 3}
@@ -69,17 +69,32 @@ PrefabInstance:
     - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -41.791
       objectReference: {fileID: 0}
     - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927716820442779343, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8927716820442779380, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387,
         type: 3}
       propertyPath: m_Name
-      value: PFB_FoodObject_Fish
+      value: PFB_FoodObject_Fish Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7530b2fdc4e2f4a86ffe03ea3e2387, type: 3}

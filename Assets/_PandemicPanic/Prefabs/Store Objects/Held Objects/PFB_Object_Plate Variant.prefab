@@ -117,32 +117,32 @@ PrefabInstance:
     - target: {fileID: 1126515221320325118, guid: 0470c67a8cd6898499cc531f7d4ddb43,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 10.45
       objectReference: {fileID: 0}
     - target: {fileID: 1126515221320325118, guid: 0470c67a8cd6898499cc531f7d4ddb43,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 1126515221320325118, guid: 0470c67a8cd6898499cc531f7d4ddb43,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -32.19
       objectReference: {fileID: 0}
     - target: {fileID: 1126515221320325118, guid: 0470c67a8cd6898499cc531f7d4ddb43,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1126515221320325118, guid: 0470c67a8cd6898499cc531f7d4ddb43,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1126515221320325118, guid: 0470c67a8cd6898499cc531f7d4ddb43,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1126515221320325118, guid: 0470c67a8cd6898499cc531f7d4ddb43,
         type: 3}
@@ -172,22 +172,22 @@ PrefabInstance:
     - target: {fileID: 1126515221320325118, guid: 0470c67a8cd6898499cc531f7d4ddb43,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 1126515221320325118, guid: 0470c67a8cd6898499cc531f7d4ddb43,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 1126515221320325118, guid: 0470c67a8cd6898499cc531f7d4ddb43,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 2693770258948937602, guid: 0470c67a8cd6898499cc531f7d4ddb43,
         type: 3}
       propertyPath: m_Name
-      value: PFB_Object_Plate Variant
+      value: PFB_Object_Plate Variant (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0470c67a8cd6898499cc531f7d4ddb43, type: 3}
