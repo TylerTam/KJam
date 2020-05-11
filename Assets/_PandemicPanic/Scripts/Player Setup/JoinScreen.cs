@@ -12,7 +12,9 @@ public class JoinScreen : MonoBehaviour
 
     public int m_playerId;
 
-    private bool m_inMatch;
+    public bool m_inMatch;
+    public bool m_isReady;
+    private bool m_allowStart;
     private bool m_selectingCosmetic;
     private Player m_playerInputController;
 
@@ -26,6 +28,7 @@ public class JoinScreen : MonoBehaviour
 
     public SoundEvent m_join, m_disconnect;
 
+    private StartUI.UIElements m_playerUi;
     private void Start()
     {
         m_playerInputController = ReInput.players.GetPlayer(m_playerId);
@@ -35,11 +38,13 @@ public class JoinScreen : MonoBehaviour
 
         if (!m_inMatch)
         {
-            if (m_playerInputController.GetButtonDown("Jump"))
+            if (m_playerInputController.GetButtonDown("Jump") && PlayerManager.Instance.m_players.Count < 4)
             {
                 m_join.Invoke();
                 PlayerManager.Instance.AssignPlayer(m_playerId, out m_playerObject);
                 m_playerIdManager = m_playerObject.GetComponent<PlayerIdManager>();
+                m_playerUi = StartUI.Instance.GetUIElements(PlayerManager.Instance.m_players.Count - 1);
+                m_playerUi.Joined();
                 m_currentHat = m_currentLeftShoulder = m_currentRightShoulder = m_currentChest = m_currentRightKneepads = m_currentLeftKneepads = 0;
                 m_inMatch = true;
                 m_selectingCosmetic = true;
@@ -72,14 +77,18 @@ public class JoinScreen : MonoBehaviour
                     m_selectingCosmetic = false;
                     m_playerObject.GetComponent<PlayerInput>().enabled = true;
                     AssignPlayerCosmetics();
+                    m_playerUi.SelectedItems();
+                    m_isReady = true;
                 }
             }
             else
             {
-                if (m_playerInputController.GetButtonDown("Start"))
+
+                if (m_playerInputController.GetButtonDown("Start") && m_allowStart)
                 {
                     UnityEngine.SceneManagement.SceneManager.LoadScene(m_nextSceneIndex);
                 }
+
             }
 
 
@@ -87,23 +96,32 @@ public class JoinScreen : MonoBehaviour
             {
                 m_disconnect.Invoke();
                 PlayerManager.Instance.RemovePlayer(m_playerId);
+                m_playerUi.Leave();
+                m_playerUi = null;
                 m_inMatch = false;
+                m_playerUi = null;
+                m_isReady = false;
             }
         }
     }
 
+    public void AllowStart(bool p_activeState)
+    {
+        m_allowStart = p_activeState;
+    }
     private void AlternateCosmetic(int p_dir)
     {
+        GameObject newCosmetic = null;
         switch (m_selection)
         {
             #region Hat
             case ChangeCosmetic.Hat:
                 m_playerIdManager.RemoveHelmet();
 
-                GameObject newHat = CosmeticManager.Instance.GetHat(m_playerId, ref m_currentHat, p_dir);
-                if (newHat != null)
+                newCosmetic = CosmeticManager.Instance.GetHat(m_playerId, ref m_currentHat, p_dir);
+                if (newCosmetic != null)
                 {
-                    m_playerIdManager.AssignHelmet(newHat);
+                    m_playerIdManager.AssignHelmet(newCosmetic);
                 }
                 break;
             #endregion
@@ -114,10 +132,10 @@ public class JoinScreen : MonoBehaviour
                 m_playerIdManager.RemoveLeftShoulder();
 
 
-                GameObject leftShould = CosmeticManager.Instance.GetLeftShoulder(m_playerId, ref m_currentLeftShoulder, p_dir);
-                if (leftShould != null)
+                newCosmetic = CosmeticManager.Instance.GetLeftShoulder(m_playerId, ref m_currentLeftShoulder, p_dir);
+                if (newCosmetic != null)
                 {
-                    m_playerIdManager.AssignLeftShoulder(leftShould);
+                    m_playerIdManager.AssignLeftShoulder(newCosmetic);
                 }
 
                 break;
@@ -129,10 +147,10 @@ public class JoinScreen : MonoBehaviour
                 m_playerIdManager.RemoveRightShoulder();
 
 
-                GameObject rightShoulder = CosmeticManager.Instance.GetRightShoulder(m_playerId, ref m_currentRightShoulder, p_dir);
-                if (rightShoulder != null)
+                newCosmetic = CosmeticManager.Instance.GetRightShoulder(m_playerId, ref m_currentRightShoulder, p_dir);
+                if (newCosmetic != null)
                 {
-                    m_playerIdManager.AssignRightShoulder(rightShoulder);
+                    m_playerIdManager.AssignRightShoulder(newCosmetic);
                 }
 
                 break;
@@ -142,10 +160,10 @@ public class JoinScreen : MonoBehaviour
             case ChangeCosmetic.Chest:
                 m_playerIdManager.RemoveChest();
 
-                GameObject newChest = CosmeticManager.Instance.GetChestPlate(m_playerId, ref m_currentChest, p_dir);
-                if (newChest != null)
+                newCosmetic = CosmeticManager.Instance.GetChestPlate(m_playerId, ref m_currentChest, p_dir);
+                if (newCosmetic != null)
                 {
-                    m_playerIdManager.AssignChest(newChest);
+                    m_playerIdManager.AssignChest(newCosmetic);
                 }
                 break;
             #endregion
@@ -154,10 +172,10 @@ public class JoinScreen : MonoBehaviour
             case ChangeCosmetic.LeftKnee:
                 m_playerIdManager.RemoveLeftKneepad();
 
-                GameObject newLeftKnees = CosmeticManager.Instance.GetLeftShoulder(m_playerId, ref m_currentLeftKneepads, p_dir);
-                if (newLeftKnees != null)
+                newCosmetic = CosmeticManager.Instance.GetLeftShoulder(m_playerId, ref m_currentLeftKneepads, p_dir);
+                if (newCosmetic != null)
                 {
-                    m_playerIdManager.AssignLeftKnee(newLeftKnees);
+                    m_playerIdManager.AssignLeftKnee(newCosmetic);
                 }
                 break;
             #endregion
@@ -166,16 +184,18 @@ public class JoinScreen : MonoBehaviour
             case ChangeCosmetic.RightKnee:
                 m_playerIdManager.RemoveRightKneepad();
 
-                GameObject newRightKnees = CosmeticManager.Instance.GetRightShoulder(m_playerId, ref m_currentRightKneepads, p_dir);
-                if (newRightKnees != null)
+                newCosmetic = CosmeticManager.Instance.GetRightShoulder(m_playerId, ref m_currentRightKneepads, p_dir);
+                if (newCosmetic != null)
                 {
-                    m_playerIdManager.AssignRightKnee(newRightKnees);
+                    m_playerIdManager.AssignRightKnee(newCosmetic);
                 }
                 break;
                 #endregion
 
         }
+        m_playerUi.ChangeCosmeticName((newCosmetic == null) ? "No Item" : newCosmetic.name);
     }
+
 
     private void SwitchSelection(int p_dir)
     {
@@ -184,65 +204,72 @@ public class JoinScreen : MonoBehaviour
             case ChangeCosmetic.Hat:
                 if (p_dir > 0)
                 {
-                    m_selection = ChangeCosmetic.Chest;
+                    ChangeSelection(ChangeCosmetic.Chest);
                 }
                 else
                 {
-                    m_selection = ChangeCosmetic.LeftShoulder;
+                    ChangeSelection(ChangeCosmetic.LeftShoulder);
                 }
                 break;
             case ChangeCosmetic.LeftShoulder:
                 if (p_dir > 0)
                 {
-                    m_selection = ChangeCosmetic.Hat;
+                    ChangeSelection(ChangeCosmetic.Hat);
                 }
                 else
                 {
-                    m_selection = ChangeCosmetic.RightShoulder;
+                    ChangeSelection(ChangeCosmetic.RightShoulder);
                 }
                 break;
             case ChangeCosmetic.RightShoulder:
                 if (p_dir > 0)
                 {
-                    m_selection = ChangeCosmetic.LeftShoulder;
+                    ChangeSelection(ChangeCosmetic.LeftShoulder);
                 }
                 else
                 {
-                    m_selection = ChangeCosmetic.Chest;
+                    ChangeSelection(ChangeCosmetic.Chest);
                 }
                 break;
             case ChangeCosmetic.Chest:
                 if (p_dir > 0)
                 {
-                    m_selection = ChangeCosmetic.RightShoulder;
+                    ChangeSelection(ChangeCosmetic.RightShoulder);
                 }
                 else
                 {
-                    m_selection = ChangeCosmetic.LeftKnee;
+                    ChangeSelection(ChangeCosmetic.LeftKnee);
                 }
                 break;
             case ChangeCosmetic.LeftKnee:
                 if (p_dir > 0)
                 {
-                    m_selection = ChangeCosmetic.Chest;
+                    ChangeSelection(ChangeCosmetic.Chest);
                 }
                 else
                 {
-                    m_selection = ChangeCosmetic.RightKnee;
+                    ChangeSelection(ChangeCosmetic.RightKnee);
                 }
                 break;
             case ChangeCosmetic.RightKnee:
                 if (p_dir > 0)
                 {
-                    m_selection = ChangeCosmetic.LeftKnee;
+                    ChangeSelection(ChangeCosmetic.LeftKnee);
                 }
                 else
                 {
-                    m_selection = ChangeCosmetic.Hat;
+                    ChangeSelection(ChangeCosmetic.Hat);
                 }
                 break;
 
         }
+    }
+
+    private void ChangeSelection(ChangeCosmetic p_newType)
+    {
+        m_selection = p_newType;
+        m_playerUi.ChangeCosmeticType(p_newType.ToString());
+        AlternateCosmetic(0);
     }
 
     private void AssignPlayerCosmetics()
