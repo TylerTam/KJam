@@ -95,6 +95,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dc2d3b879d63c3942865222d01dca7e1, type: 2}
+    - target: {fileID: -1504981713932161579, guid: 8b5a9d9eedf9ea1469ac33cc383595da,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 8b5a9d9eedf9ea1469ac33cc383595da,
         type: 3}
       propertyPath: m_Name
@@ -187,7 +192,7 @@ PrefabInstance:
     - target: {fileID: 2693770258948937602, guid: 0470c67a8cd6898499cc531f7d4ddb43,
         type: 3}
       propertyPath: m_Name
-      value: PFB_Object_Plate Variant (3)
+      value: PFB_Object_Plate Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0470c67a8cd6898499cc531f7d4ddb43, type: 3}
