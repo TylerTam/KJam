@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_PandemicPanic/Scenes/SplashScreen.unity
+    guid: dd03519eeca778e499be07b840e6a3bd
+  - enabled: 1
     path: Assets/_PandemicPanic/Scenes/PlayerSelect.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
