@@ -2,8 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Checkout : MonoBehaviour
 {
+
+    public static Checkout Instance;
+    public SoundEvent m_checkoutEvent;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+    public void CheckoutComplete()
+    {
+        m_checkoutEvent.Invoke();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<ShoppingCart>() != null)

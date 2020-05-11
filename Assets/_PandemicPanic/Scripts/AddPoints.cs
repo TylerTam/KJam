@@ -8,6 +8,7 @@ public class AddPoints : MonoBehaviour
 
     public virtual int GetAddedPoints()
     {
+        Checkout.Instance.CheckoutComplete();
         return m_addedPoints;
     }
 }
