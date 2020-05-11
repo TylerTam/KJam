@@ -158,7 +158,7 @@ MonoBehaviour:
   m_shoppingCartLayer:
     serializedVersion: 2
     m_Bits: 1024
-  m_checkOutTime: 0
+  m_checkOutTime: 1.5
   m_unlocksCosmetic: 1
   m_cosmeticType: 0
   m_cosmeticGlow: {fileID: 4376336720388585315}

@@ -193,7 +193,7 @@ public class JoinScreen : MonoBehaviour
                 #endregion
 
         }
-        m_playerUi.ChangeCosmeticName((newCosmetic == null) ? "No Item" : newCosmetic.name);
+        m_playerUi.ChangeCosmeticName((newCosmetic == null) ? "No Item" : newCosmetic.GetComponent<CosmeticItem>().m_cosmeticName);
     }
 
 
