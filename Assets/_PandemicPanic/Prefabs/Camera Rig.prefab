@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_camera: {fileID: 217340471481720002}
   m_lowestCameraZoom: 40
-  m_farthestCameraZoon: -40
-  m_maxCharacterDistance: 60
+  m_farthestCameraZoon: -30
+  m_maxCharacterDistance: 70
   m_cameraFieldOfView: 60
   m_horizontalLerpSpeed: 2
   m_zoomLerpSpeed: 2

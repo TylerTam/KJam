@@ -134,20 +134,17 @@ public class StoreManager : MonoBehaviour
 
     private string GetWinningPlayer()
     {
-        PlayerScores winningPlayer = null;
-        foreach (PlayerScores player in m_playerScores)
+        int m_currentScore = 0;
+        int m_heldIndex = 0;
+        foreach(PlayerScores score in m_playerScores)
         {
-            if (winningPlayer == null)
+            if(score.m_score > m_currentScore)
             {
-                winningPlayer = player;
-                continue;
-            }
-            if (winningPlayer.m_score < player.m_score)
-            {
-                winningPlayer = player;
+                m_heldIndex = m_playerScores.IndexOf(score);
+                m_currentScore = score.m_score;
             }
         }
-        return m_uiColorNames[winningPlayer.m_playerColorType];
+        return "Shopper " + (m_heldIndex + 1).ToString();
     }
 
     private IEnumerator EndGameTimer()
@@ -158,7 +155,6 @@ public class StoreManager : MonoBehaviour
 
     public List<FoodObject> GetRandomFoodObjects(int p_amount)
     {
-        print("Random Food");
         List<FoodObject> randomFood = new List<FoodObject>();
         List<FoodObject> activeFoods = new List<FoodObject>(m_foodItems);
         if(p_amount > activeFoods.Count)

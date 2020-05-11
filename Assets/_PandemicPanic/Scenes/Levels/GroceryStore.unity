@@ -58986,6 +58986,11 @@ PrefabInstance:
       propertyPath: m_foodItems.Array.data[116]
       value: 
       objectReference: {fileID: 1141275152}
+    - target: {fileID: 4232654702825956564, guid: 19fb9883c557282419a598c3088d60a4,
+        type: 3}
+      propertyPath: m_endGameTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4232654702825956565, guid: 19fb9883c557282419a598c3088d60a4,
         type: 3}
       propertyPath: m_Name
