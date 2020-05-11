@@ -131,7 +131,7 @@ MonoBehaviour:
   m_unlockableCosmetics:
   - m_cosmeticName: Cardboard Helmet
     m_cosmeticReferences:
-      m_myType: 3
+      m_myType: 0
       m_cosmetic: {fileID: 5818286345793641475, guid: f63b9726d3a0c43469ca228251cde7e4,
         type: 3}
   - m_cosmeticName: Cardboard LShould

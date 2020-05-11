@@ -37,6 +37,7 @@ public class CosmeticAppearManager : MonoBehaviour
         foreach(FoodObject food in StoreManager.Instance.GetRandomFoodObjects(m_cosmeticAppearTimes[p_index].m_numberOfItems))
         {
             food.ShowGlow(m_cosmeticAppearTimes[p_index].m_despawnTime);
+
         }
     }
 }

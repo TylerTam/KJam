@@ -28,6 +28,7 @@ public class FoodObject : AddPoints, Pickupable
     private WaitForSeconds m_searchDelay;
     private Coroutine m_searchCoroutune;
     private Rigidbody m_rigidBody;
+    private bool m_unlockedCosmetic;
 
     private void Awake()
     {
@@ -151,8 +152,9 @@ public class FoodObject : AddPoints, Pickupable
 
     public override int GetAddedPoints()
     {
-        if (m_unlocksCosmetic)
+        if (m_unlocksCosmetic && !m_unlockedCosmetic)
         {
+            m_unlockedCosmetic = true;
             CosmeticManager.Instance.CheckCosmetic(m_owner, m_cosmeticType);
         }
         return base.GetAddedPoints();
@@ -185,6 +187,7 @@ public class FoodObject : AddPoints, Pickupable
         float timer = p_time;
 
         m_cosmeticGlow.SetActive(true);
+        m_unlocksCosmetic = true;
         while (timer > 0)
         {
             timer -= Time.deltaTime;
