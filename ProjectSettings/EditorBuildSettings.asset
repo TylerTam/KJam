@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/_PandemicPanic/Scenes/PlayerSelect.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/_PandemicPanic/Scenes/SplashTips.unity
+    guid: 63645479a4a3994499de40432bff00ec
+  - enabled: 1
     path: Assets/_PandemicPanic/Scenes/Levels/GroceryStore.unity
     guid: 906bf813bf2f44e4c85ea6f685478afe
   - enabled: 0

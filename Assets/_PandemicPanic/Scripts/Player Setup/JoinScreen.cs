@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using UnityEngine.SceneManagement;
 
 
 public class JoinScreen : MonoBehaviour
@@ -24,7 +25,7 @@ public class JoinScreen : MonoBehaviour
     private int m_currentHat, m_currentLeftShoulder, m_currentRightShoulder, m_currentChest, m_currentRightKneepads, m_currentLeftKneepads;
     private bool m_canSwap = true, m_canSwap2 = true;
 
-    public int m_nextSceneIndex;
+    private int m_nextSceneIndex;
 
     public SoundEvent m_join, m_disconnect;
 
@@ -32,6 +33,7 @@ public class JoinScreen : MonoBehaviour
     private void Start()
     {
         m_playerInputController = ReInput.players.GetPlayer(m_playerId);
+        m_nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
     }
     private void Update()
     {
